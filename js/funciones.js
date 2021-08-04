@@ -71,7 +71,7 @@ export const conexion = async (url,contador = 1) => {
     });
     $divR.appendChild($fragmento)
     $contResul.appendChild($divR);
-    $paginacion.classList.remove("dissabled");
+    $paginacion.classList.remove("disabled");
     $pag.textContent = `${contador}/${res.info.pages}`;
 
     switch(res.info.next){
