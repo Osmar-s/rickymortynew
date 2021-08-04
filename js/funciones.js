@@ -13,9 +13,10 @@ export const remover = (texto) =>{
 let $gender = document.getElementById("gender"),$status = document.getElementById("status"),
     $total = document.getElementById('totalResul'),$contResul = document.getElementById('resul'),
     $nextt = document.getElementById("next"),$prevv = document.getElementById("prev"),
-    $pag = document.getElementById('pag'),$paginacion = document.getElementById("paginacion");
-
-export const conexion = async (url,contador = 1) => {
+    $pag = document.getElementById('pag'),$paginacion = document.getElementById("paginacion"),contadorInicial=1,
+    $next = document.getElementById("next"),$prev = document.getElementById("prev");
+export const conexion = async (url) => {
+    console.log("desde conexion",contadorInicial);
     let $ultimo = $contResul.lastElementChild;
     const con = await fetch(url);
     if(con.status !== 200)
@@ -72,7 +73,7 @@ export const conexion = async (url,contador = 1) => {
     $divR.appendChild($fragmento)
     $contResul.appendChild($divR);
     $paginacion.classList.remove("disabled");
-    $pag.textContent = `${contador}/${res.info.pages}`;
+    $pag.textContent = `${contadorInicial}/${res.info.pages}`;
 
     switch(res.info.next){
         case null:
@@ -111,40 +112,48 @@ const estado = (es) => {
 }
 
 export const preUrl = (personaje = "") => {
-    let url = `https://rickandmortyapi.com/api/character/`;
+    let url = `https://rickandmortyapi.com/api/character/`,contador=1;
     if(personaje !== "" && $gender.value === 'gender' && $status.value === 'status')
     {
         url += `?name=${personaje}`;
+        contadorInicial =1;
     }
     else if(personaje !== '' && $gender.value !== 'gender' && $status.value === 'status'){
         url += `?name=${personaje}&gender=${$gender.value}`;
     }
     else if(personaje !== '' && $status.value !== 'status' && $gender.value === 'gender'){
         url += `?name=${personaje}&status=${$status.value}`;
+        contadorInicial =1;
     }
     else if($gender.value !== 'gender' && personaje === "" && $status.value === 'status')
     {
         url += `?gender=${$gender.value}`;
+        contadorInicial =1;
     }
     else if($gender.value !== 'gender' && personaje !== '' && $status.value === 'status')
     {
-        url += `?name=${personaje}&gender=${$gender.value}`
+        url += `?name=${personaje}&gender=${$gender.value}`;
+        contadorInicial =1;
     }
     else if($gender.value !== 'gender' && $status.value !== 'status' && personaje === '')
     {
         url += `?gender=${$gender.value}&status=${$status.value}`;
+        contadorInicial =1;
     }
     else if($status.value !== 'status' && personaje === "" && $gender.value === 'gender')
     {
         url += `?status=${$status.value}`;
+        contadorInicial =1;
     }
     else if($status.value !== 'status' && personaje !== '' && $gender.value === 'gender')
     {
         url += `?name=${personaje}&status=${$status.value}`;
+        contadorInicial =1;
     }
     else if(personaje !== '' && $status.value !== 'status' && $gender.value !== 'gender')
     {
         url += `?name=${personaje}&status=${$status.value}&gender=${$gender.value}`;
+        contadorInicial =1;
     }
     else{
         let $ultimo = $contResul.lastElementChild;
@@ -152,7 +161,24 @@ export const preUrl = (personaje = "") => {
         $total.textContent = "";
         $paginacion.classList.add("disabled");
         swal("Ocurrío un Error", "Por favor Ingrese un nombre o seleccione una opción", "error");
+        contadorInicial =1;
         return;
     }
     conexion(url);
 }
+
+$next.addEventListener("click",(e)=> {
+    e.preventDefault();
+    console.log("desde next",contadorInicial);
+    contadorInicial++;
+    console.log("desde next",contadorInicial);
+    conexion($next.href);
+});
+
+$prev.addEventListener("click",(e)=>{
+    e.preventDefault();
+    console.log("desde prev",contadorInicial);
+    contadorInicial--;
+    console.log("desde prev",contadorInicial);
+    conexion($prev.href);
+});
