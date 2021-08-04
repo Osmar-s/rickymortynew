@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rick y Morty</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="img/logo.png" alt="Ricky y Morty logo">
+            <form class="formulario" id="formulario">
+                <input type="text" name="nombrePersonaje" id="bPersonaje" placeholder="Ingresar nombre del personaje" class="bPersonaje"><button type="submit" class="btnBuscar" id="btnBuscar"><i class="fas fa-search"></i></button>
+            </form>
+        </nav>
+        <div class="filtros">
+            <select id="gender">
+                <option value="gender">G&eacute;nero</option>
+                <option value="female">Mujer</option>
+                <option value="male">Hombre</option>
+                <option value="unknown">Desconocido</option>
+            </select>
+            <select id="status">
+                <option value="status">Estado</option>
+                <option value="alive">Vivo</option>
+                <option value="dead">Muerto</option>
+                <option value="unknow">Desconocido</option>
+            </select>
+        </div>
+    </header>
+    <section id="resul">
+        <div class="total">
+            <p id="totalResul"></p>
+        </div>
+        <!-- <div class="resultados">
+            <div class="tarjeta">
+                <div class="gen female">
+                    <i class="fas fa-female"></i>
+                </div>
+                <p>Nombre: <span class="datos">Sara&iacute;</span></p>
+                <p>Estado: <span class="datos">Viva</span></p>
+                <p>G&eacute;nero: <span class="datos">Femenino</span></p>
+                <p>Especie: <span class="datos">Humano</span></p>
+                <p>Origen: <span class="datos">Earth (C-137)</span></p>
+                <br>
+                <img src="img/33383671_1616889935090601_5976881741858603008_o.jpg" alt="">
+            </div>
+        </div> -->
+    </section>
+    <script src="js/evento.js" type="module"></script>
+    <script src="js/sweetalert.js"></script>
+</body>
+</html>
