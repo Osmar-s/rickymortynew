@@ -125,6 +125,40 @@ nav .formulario{
 .unknow{
     color:#D1D1D1;
 }
+.a{
+    padding: 0 5px;
+    border-radius:5px;
+    color: #252A34;
+    font-weight: bold;
+}
+.alive{
+    background: #98FF9B;
+}
+.dead{
+    background: #FF7C7C;
+}
+.des{
+    background: #525252;
+    color:#FFFFFF;
+}
+#paginacion{
+    width: 100%;
+    max-width: 1200px;
+    margin:50px auto;
+    display: flex;
+    justify-content: center;
+    font-size: 1.5em;
+}
+#paginacion > a{
+    color:#08D9D6;
+    margin:0px 20px;
+}
+#paginacion span{
+    color:#FFFFFF;
+}
+.disabled{
+    visibility: hidden;
+}
 @media screen and (max-width:1200px)
 {
     header{
