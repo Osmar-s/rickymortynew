@@ -21,7 +21,7 @@ export const conexion = async (url,contador = 1) => {
     if(con.status !== 200)
     {
         swal("Sin Resultados :(", "", "error");
-        $contResul.removeChild($ultimo);
+        if($ultimo.className === 'resultados') $contResul.removeChild($ultimo);
         $total.textContent = "";
         $paginacion.classList.add("disabled");
         return;
@@ -148,7 +148,7 @@ export const preUrl = (personaje = "") => {
     }
     else{
         let $ultimo = $contResul.lastElementChild;
-        $contResul.removeChild($ultimo);
+        if($ultimo.className === 'resultados') $contResul.removeChild($ultimo);
         $total.textContent = "";
         $paginacion.classList.add("disabled");
         swal("Ocurrío un Error", "Por favor Ingrese un nombre o seleccione una opción", "error");
